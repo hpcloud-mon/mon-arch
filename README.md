@@ -91,36 +91,66 @@ Jahmon uses a number of underlying technologies:
 
 * Vertica (http://www.vertica.com): A commercial SQL analytics database that is highly scalable. It offers built-in automatic high-availability and excels at in-database analytics and compressing and storing massive amounts of data. In Jahmon, we use Vertica primarily for storing and querying metrics and the alarm history. A free version of Vertica that can store up to 1 TB of data with no time-limit is available at, https://my.vertica.com/community/. This should be sufficient to get developers started with using Jahmon and support smaller installations or where data retention periods aren't that long.
 
-* Apache Kafka (http://kafka.apache.org): Apache Kafka is publish-subscribe messaging rethought as a distributed commit log. Kafka is a highly performance, distributed, fault-tolerant, and scalable message queue with durability bilt-in. 
+* Apache Kafka (http://kafka.apache.org): Apache Kafka is publish-subscribe messaging rethought as a distributed commit log. Kafka is a highly performant, distributed, fault-tolerant, and scalable message queue with durability built-in. 
 
 * Apache Storm (http://storm.incubator.apache.org/): Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.
+
 * ZooKeeper: Used by Kafka and Storm, http://zookeeper.apache.org/
 
 * MySQL:
 
 * Vagrant (http://www.vagrantup.com/): Vagrant provides easy to configure, reproducible, and portable work environments built on top of industry-standard technology and controlled by a single consistent workflow to help maximize the productivity and flexibility of you and your team.
 
-* Disruptor: http://lmax-exchange.github.io/disruptor/
+* Dropwizard (https://dropwizard.github.io/dropwizard/): Dropwizard pulls together stable, mature libraries from the Java ecosystem into a simple, light-weight package that lets you focus on getting things done. Dropwizard has out-of-the-box support for sophisticated configuration, application metrics, logging, operational tools, and much more, allowing you and your team to ship a production-quality web service in the shortest time possible.
+
+* Disruptor ()http://lmax-exchange.github.io/disruptor/): The Disruptor is a high-speed ring buffer implementation.
 
 # Future Plans
 
-The initial Jahmon code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications engine. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
+The initial Jahmon code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications pipeline. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
 
 * Converting more components to Python: Several of the components in Jahmon have been written using Python, but several have been written in Java and Java libraries or frameworks. We are pursuing converting these to Python where it makes sense.
  
 * Support for events. Currently we are focused on a metrics processing engine, but we see events as one possible next step.
 
-* Support for an open-source Metrics and Alarm History database. Currently, Vertica is used for Metrics and Alarm History database. While Vertica is an absolutely amazing analytics database and has a free Community Edition available, we realize that support of only a commerical database in an open-source project is significant impediment for more wide-spread adoption by the open-source community. We will be adding support for at least one completely open-source database. 
+* Support for an open-source Metrics and Alarm History database. Currently, Vertica is used for Metrics and Alarm History database. While Vertica is an absolutely amazing analytics database and has a free Community Edition available, we realize that support of only a commerical database in an open-source project is significant impediment for more wide-spread adoption by the open-source community. We will be adding support for at least one completely open-source database.
+
+* More advanced in-database analytics: Current support for statistics could be greatly extended by adding in-database process of standard of deviation, moving window averages, and many more. We would also like to add the ability to do anomaly detection.   
 
 * More agents.
 
 * OpenStack integration. Currently, we have developed a Ceilometer multi-publisher plugin that published to the Monitoring API. We will be continuing to work with the OpenStack community on additional integration points. Potential areas are:
 	* Heat:
 	* Keystone: As the Monitoring API uses Keystone for authentication we would like to see the addition of access key authentication, covered in https://blueprints.launchpad.net/keystone/+spec/access-key-authentication.
-	* TripleO: 
+	* TripleO:
+	
+* Transform and Aggregation Engine:
+
+* Support for database migrations:
+
+* Integration with Graphite 
+
 
 # Contact
 
 * Roland Hochmuth: roland.hochmuth@hp.com
+
+# License
+
+Copyright (c) 2014 Hewlett-Packard Development Company, L.P.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 
 
