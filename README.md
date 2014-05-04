@@ -11,7 +11,7 @@ Jahmon is a comprehensive cloud monitoring solution for OpenStack based clouds. 
 
 This section describes the overall features iof Jahmon.
 
-* A highly performant, scalable, reliable and fault-tolerant monitoring solution. Performance, scalability and high-availability have been designed in from the start. Jahmon can process 100s of thousands of metrics/sec as well as offer data retention periods of greater than a year with no data loss while still processing interactive queries.
+* A highly performant, scalable, reliable and fault-tolerant monitoring solution that scales to service provider metrics levels of metrics throughput. Performance, scalability and high-availability have been designed in from the start. Jahmon can process 100s of thousands of metrics/sec as well as offer data retention periods of greater than a year with no data loss while still processing interactive queries.
 
 * Consolidates and unifies both operational (internal) and Monitoring as a Service (customer facing) capabilities. Service providers usually treat service operational monitoring separately from customer facing Monitoring as a Service (MaaS). This distinction is arbitrary and our solution has been designed to handle both, which allows us to reduce the number of systems that are required for monitoring. Jahmon is a multi-tenant solution.
 
@@ -58,7 +58,7 @@ This section describes the overall features iof Jahmon.
 
 * Config Database: A third-party component that stores a lot of the configuration and other information in the system. Currently, MySQL is supported.
 
-* Monitoring Client (python-monclient): A Python command line client that communicates and controls the Monitoring API. The Monitoring Client was written using the OpenStack Heat Python client as a framwork.
+* Monitoring Client (python-monclient): A Python command line client and library that communicates and controls the Monitoring API. The Monitoring Client was written using the OpenStack Heat Python client as a framework. The Monitoring Client also has a Python library, "monclient" similar to the other OpenStack clients, that can be used to quickly build additional capabilities. The Monitoring Client library is used by the Monitoring UI, Ceilometer publisher, and other components.
 
 * Monitoring UI: A Horizon dashboard for visualizing the overall health and status of an OpenStack cloud.
 
@@ -107,28 +107,31 @@ Jahmon uses a number of underlying technologies:
 
 # Future Plans
 
-The initial Jahmon code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications pipeline. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
+The initial Jahmon code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications pipeline. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers. Here is just a sample of the items that we think make sense to work on next.
 
 * Converting more components to Python: Several of the components in Jahmon have been written using Python, but several have been written in Java and Java libraries or frameworks. We are pursuing converting these to Python where it makes sense.
  
-* Support for events. Currently we are focused on a metrics processing engine, but we see events as one possible next step.
+* Support for events. Currently we are focused on a metrics processing engine, but we see events as an important area to address.
 
-* Support for an open-source Metrics and Alarm History database. Currently, Vertica is used for Metrics and Alarm History database. While Vertica is an absolutely amazing analytics database and has a free Community Edition available, we realize that support of only a commerical database in an open-source project is significant impediment for more wide-spread adoption by the open-source community. We will be adding support for at least one completely open-source database.
+* Support for an open-source Metrics and Alarm History database. Currently, Vertica is used for Metrics and Alarm History database. While Vertica is an absolutely amazing analytics database and has a free Community Edition available, we realize that support of only a commerical database in an open-source project is impediment for more wide-spread adoption by the open-source community. We will be adding support for at least one completely open-source database.
 
 * More advanced in-database analytics: Current support for statistics could be greatly extended by adding in-database process of standard of deviation, moving window averages, and many more. We would also like to add the ability to do anomaly detection.   
 
-* More agents.
+* Support for additional service checks: The Monitoring Agent support a number of built-in system and service checks, such as MySQL and RabbitMQ.
 
 * OpenStack integration. Currently, we have developed a Ceilometer multi-publisher plugin that published to the Monitoring API. We will be continuing to work with the OpenStack community on additional integration points. Potential areas are:
 	* Heat:
 	* Keystone: As the Monitoring API uses Keystone for authentication we would like to see the addition of access key authentication, covered in https://blueprints.launchpad.net/keystone/+spec/access-key-authentication.
-	* TripleO:
+	* TripleO: When TripleO is used to deploy OpenStack we want the Monitoring Agents and Alarms to be automatically deployed as well.
 	
 * Transform and Aggregation Engine:
 
 * Support for database migrations:
 
-* Integration with Graphite 
+* Integration with Graphite
+
+* As we are also building Jahmon for HP's CloudSystem we will be developing an integrated and automatically configured solution for the Monitoring Agents and Alarms.
+
 
 
 # Contact
