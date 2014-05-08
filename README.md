@@ -159,7 +159,7 @@ The SQL schema is as follows:
 	* updated_at 
 * sub_alarm_dimension
 	* sub_alarm_id
-	* dimensions_name
+	* dimension_name
 	* value 
 
 ## Post Metric Sequence
