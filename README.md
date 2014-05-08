@@ -82,10 +82,10 @@ https://git.hpcloud.net/mon/cookbooks-zookeeper
 There are several messages that are published and consumed by various components in the monitoring system via the MessageQ.
 
 | Message | Produced By	| Consumed By |	Kafka Topic | Description |
-| Metric	| API, Transform and Aggregation Engine | Persister | Threshold Engine | metrics |	A metric sent to the Monitoring API or created by the Transform and Aggregation Engine is published to the MessageQ. |
-| Alarm Definition Event |	API	| Threshold Engine | events | When an alarm is created, updated, or deleted by the monitoring API an Alarm Definition Event is published to the MessageQ. |
-|Alarm State Transitioned |	Threshold Engine |	Notification Engine | Persister | alarm-state-transitions | When an alarm transitions from the OK to Alarmed, Alarmed to OK, ..., this event is published to the MessageQ and persisted by the persister and processed by the Notification Engine. The Monitoring API can query the history of alarm state transition events. |
-| Alarm Notification | Notification Engine	| Persister | alarm-notifications | This event is published to the MessageQ when the notification engine processes an alarm and sends a notification. The alarm notification is persisted by the Persister and can be queried by the Monitoring API. The database maintains a history of all events.
+| Metric | API, Transform and Aggregation Engine | Persister | Threshold Engine | metrics | A metric sent to the Monitoring API or created by the Transform and Aggregation Engine is published to the MessageQ. |
+| Alarm Definition Event | API	| Threshold Engine | events | When an alarm is created, updated, or deleted by the monitoring API an Alarm Definition Event is published to the MessageQ. |
+|Alarm State Transitioned | Threshold Engine |	Notification Engine | Persister | alarm-state-transitions | When an alarm transitions from the OK to Alarmed, Alarmed to OK, ..., this event is published to the MessageQ and persisted by the persister and processed by the Notification Engine. The Monitoring API can query the history of alarm state transition events. |
+| Alarm Notification | Notification Engine | Persister | alarm-notifications | This event is published to the MessageQ when the notification engine processes an alarm and sends a notification. The alarm notification is persisted by the Persister and can be queried by the Monitoring API. The database maintains a history of all events.
 
 ### Metrics and Alarm History
 
