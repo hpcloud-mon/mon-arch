@@ -91,10 +91,76 @@ There are several messages that are published and consumed by various components
 |Alarm State Transitioned | Threshold Engine |	Notification Engine, Persister | alarm-state-transitions | When an alarm transitions from the OK to Alarmed, Alarmed to OK, ..., this event is published to the MessageQ and persisted by the persister and processed by the Notification Engine. The Monitoring API can query the history of alarm state transition events. |
 | Alarm Notification | Notification Engine | Persister | alarm-notifications | This event is published to the MessageQ when the notification engine processes an alarm and sends a notification. The alarm notification is persisted by the Persister and can be queried by the Monitoring API. The database maintains a history of all events.
 
-### Metrics and Alarm History
+### Metrics and Alarms Database
+
+A high-performance analytics database that can store massive amounts of metrics and alarms in real-time and also support interactive queries. Currently based on Vertica.
+
+The SQL schema is as follows:
+
+* MonMetrics.Measurements: Stores the actual measurements that are sent.
+	* id: An integer ID for the measurement.
+	* definition_dimensions_id: A reference to DefinitionDimensions.
+	* time_stamp
+	* value
+* MonMetrics.DefinitionDimensions
+	* id: A sha1 hash of (defintion_id, dimension_set_id)
+	* definition_id: A reference to the Definitions.id
+	* dimension_set_id: A reference to the Dimensions.dimension_set_id
+* MonMetrics.Definitions
+	* id: A sha1 hash of the (name, tenant_id, region)
+	* name: Name of the metric.
+	* tenant_id: The tenant_id that submitted the metric.
+	* region: The region the metric was submitted under. 
+* MonMetric.Dimensions
+	* dimension_set_id: A sha1 hash of the set of dimenions for a metric.
+	* name: Name of dimension.
+	* value: Value of dimension.
 
 ### Config Database
 
+The config database store all the configuration information. Currently based on MySQL. 
+
+The SQL schema is as follows:
+
+* alarm
+	* id
+	* tenant_id
+	* name
+	* description
+	* expression
+	* state
+	* actions_enabled
+	* created_at
+	* updated_at
+	* deleted_at 
+* alarm_action
+	* alarm_id
+	* alarm_state
+	* action_id 
+* notification_method
+	* id
+	* tenant_id
+	* name
+	* type
+	* address
+	* created_at
+	* updated_at 
+* sub_alarm
+	* id
+	* alarm_id
+	* function
+	* metric_name
+	* operator
+	* threshold
+	* period
+	* periods
+	* state
+	* created_at
+	* updated_at 
+* sub_alarm_dimension
+	* sub_alarm_id
+	* dimensions_name
+	* value 
 
 ## Post Metric Sequence
 
