@@ -76,8 +76,11 @@ A distributed, performant, scalable, HA message queue for distributing metrics, 
 
 #### Cookbooks
 
-https://git.hpcloud.net/mon/cookbooks-kafka
-https://git.hpcloud.net/mon/cookbooks-zookeeper
+* https://git.hpcloud.net/mon/cookbooks-kafka
+* https://git.hpcloud.net/mon/cookbooks-zookeeper
+
+#### Messages
+
 
 There are several messages that are published and consumed by various components in the monitoring system via the MessageQ.
 
