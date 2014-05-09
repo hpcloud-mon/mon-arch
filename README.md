@@ -1,6 +1,6 @@
 # Introduction
 
-Jahmon is a comprehensive cloud monitoring solution for OpenStack based clouds. It employs node-based agents to report metrics to a RESTful API, where alarms can be created, evaluated and notifications are sent. Monitoring enables users to understand the operational effectiveness of the services and underlying infrastructure that make up their cloud and provide actionable details when there is a problem.
+A comprehensive cloud monitoring solution for OpenStack based clouds that employs node-based agents to report metrics to a RESTful API, where alarms can be created, evaluated and notifications are sent. Monitoring enables users to understand the operational effectiveness of the services and underlying infrastructure that make up their cloud and provide actionable details when there is a problem.
 
 * Target Platform: OpenStack based systems and companies that use OpenStack.
 * What: Node agent based metrics collection to a RESTful API.
@@ -9,11 +9,11 @@ Jahmon is a comprehensive cloud monitoring solution for OpenStack based clouds. 
 
 ## Features
 
-This section describes the overall features of Jahmon.
+This section describes the overall features.
 
-* A highly performant, scalable, reliable and fault-tolerant monitoring solution that scales to service provider metrics levels of metrics throughput. Performance, scalability and high-availability have been designed in from the start. Jahmon can process 100s of thousands of metrics/sec as well as offer data retention periods of greater than a year with no data loss while still processing interactive queries.
+* A highly performant, scalable, reliable and fault-tolerant monitoring solution that scales to service provider metrics levels of metrics throughput. Performance, scalability and high-availability have been designed in from the start. Can process 100s of thousands of metrics/sec as well as offer data retention periods of greater than a year with no data loss while still processing interactive queries.
 
-* Consolidates and unifies both operational (internal) and Monitoring as a Service (customer facing) capabilities. Service providers usually treat service operational monitoring separately from customer facing Monitoring as a Service (MaaS). This distinction is arbitrary and our solution has been designed to handle both, which allows us to reduce the number of systems that are required for monitoring. Jahmon is a multi-tenant solution.
+* Consolidates and unifies both operational (internal) and Monitoring as a Service (customer facing) capabilities. Service providers usually treat service operational monitoring separately from customer facing Monitoring as a Service (MaaS). This distinction is arbitrary and our solution has been designed to handle both, which allows us to reduce the number of systems that are required for monitoring. A multi-tenant solution.
 
 * Rest API for storing and querying  metrics and historical information. Most monitoring solution use special transports and protocols, such as CollectD or NSCA (Nagios). In our solution, http is the only protocol used. This simplifies the overall design and also allows for a much richer way of describing the data via dimensions.
 
@@ -46,7 +46,7 @@ This section describes the overall features of Jahmon.
 		* Alarm state transitions are
 		* Alarm severities can be associated with alarms.
 		* The complete alarm state transition history is stored and queryable which allows for subsequent root cause anlaysis (RCA) or advanced analytics.
-	* Notification Methods: Create and delete notification methods and associate them with alarms, such as email. Jahmon supports the ability to notify users directly via email when an alarm state transitions occur.
+	* Notification Methods: Create and delete notification methods and associate them with alarms, such as email. Supports the ability to notify users directly via email when an alarm state transitions occur.
 	
 * Persister (mon-persister): Consumes metrics and alarm state transitions from the MessageQ and stores them in the Metrics and Alarms database. The Persister uses the Disruptor library, http://lmax-exchange.github.io/disruptor/. We will look into converting the Persister to a Python component in the future.
 
@@ -68,7 +68,7 @@ This section describes the overall features of Jahmon.
 
 * Ceilometer publisher: A multi-publisher plugin for Ceilometer, not shown, that converts and publishes samples to the Monitoring API.
 
-Most of the components in Jahmon are described in their respective repositries. However, there aren't any repositories for the third-party components used in Jahmon so we describe some of the relevant details here.
+Most of the components in are described in their respective repositries. However, there aren't any repositories for the third-party components used we describe some of the relevant details here.
 
 ### Message Queue
 
@@ -179,15 +179,15 @@ This section describes the sequence of operations involved in posting a metric t
 
 # Development Environment
 
-Jahmon comes with a turn-key development environment based on Vagrant, that can be used for quickly deploying Jahmon on a client system, such as a MAC OS X based system.
+Comes with a turn-key development environment based on Vagrant, that can be used for quickly deploying on a client system, such as a MAC OS X based system.
 
-Jahmon also comes with a number of Chef cookbooks.
+Also comes with a number of Chef cookbooks.
 
 # Technologies
 
-Jahmon uses a number of underlying technologies:
+Uses a number of underlying technologies:
 
-* Vertica (http://www.vertica.com): A commercial Enterprise class SQL analytics database that is highly scalable. It offers built-in automatic high-availability and excels at in-database analytics and compressing and storing massive amounts of data. In Jahmon, we use Vertica primarily for storing and querying metrics and the alarm history. A free version of Vertica that can store up to 1 TB of data with no time-limit is available at, https://my.vertica.com/community/. This should be sufficient to get developers started with using Jahmon and support smaller installations or where data retention periods aren't that long.
+* Vertica (http://www.vertica.com): A commercial Enterprise class SQL analytics database that is highly scalable. It offers built-in automatic high-availability and excels at in-database analytics and compressing and storing massive amounts of data. We use Vertica primarily for storing and querying metrics and the alarm history. A free version of Vertica that can store up to 1 TB of data with no time-limit is available at, https://my.vertica.com/community/. This should be sufficient to get developers started and support smaller installations or where data retention periods aren't that long.
 
 * Apache Kafka (http://kafka.apache.org): Apache Kafka is publish-subscribe messaging rethought as a distributed commit log. Kafka is a highly performant, distributed, fault-tolerant, and scalable message queue with durability built-in. 
 
@@ -205,11 +205,11 @@ Jahmon uses a number of underlying technologies:
 
 # Future Plans
 
-The initial Jahmon code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
+The initial code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
 
 Here is just a sample of the items that we think make sense to work on next.
 
-* Converting more components to Python: Several of the components in Jahmon have been written using Python, but several have been written in Java and Java libraries or frameworks. We are interested in converting components to Python where it makes sense.
+* Converting more components to Python: Several of the components have been written using Python, but several have been written in Java and Java libraries or frameworks. We are interested in converting components to Python where it makes sense.
  
 * Support for events. Currently we are focused on a metrics processing engine, but we see events as an important area to address.
 
@@ -230,7 +230,7 @@ Here is just a sample of the items that we think make sense to work on next.
 
 * Integration with Graphite
 
-* As we are also building Jahmon for HP's CloudSystem we will be developing an integrated and automatically configured solution for the Monitoring Agents and Alarms.
+* As we are also building for HP's CloudSystem we will be developing an integrated and automatically configured solution for the Monitoring Agents and Alarms.
 
 # Contact
 
