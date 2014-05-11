@@ -13,7 +13,7 @@ This section describes the overall features.
 
 * A highly performant, scalable, reliable and fault-tolerant monitoring solution that scales to service provider metrics levels of metrics throughput. Performance, scalability and high-availability have been designed in from the start. Can process 100s of thousands of metrics/sec as well as offer data retention periods of greater than a year with no data loss while still processing interactive queries.
 
-* Consolidates and unifies both operational (internal) and Monitoring as a Service (customer facing) capabilities. Service providers usually treat service operational monitoring separately from customer facing Monitoring as a Service (MaaS). This distinction is arbitrary and our solution has been designed to handle both, which allows us to reduce the number of systems that are required for monitoring. A multi-tenant solution.
+* Consolidates and unifies both operational (internal) and Monitoring as a Service (customer facing) capabilities. Service providers usually treat service operational monitoring separately from customer facing Monitoring as a Service (MaaS). This distinction is arbitrary and our solution has been designed to handle both, which allows us to reduce the number of systems that are required for monitoring.
 
 * Rest API for storing and querying  metrics and historical information. Most monitoring solution use special transports and protocols, such as CollectD or NSCA (Nagios). In our solution, http is the only protocol used. This simplifies the overall design and also allows for a much richer way of describing the data via dimensions.
 
@@ -187,7 +187,7 @@ Also comes with a number of Chef cookbooks.
 
 Uses a number of underlying technologies:
 
-* Vertica (http://www.vertica.com): A commercial Enterprise class SQL analytics database that is highly scalable. It offers built-in automatic high-availability and excels at in-database analytics and compressing and storing massive amounts of data. We use Vertica primarily for storing and querying metrics and the alarm history. A free version of Vertica that can store up to 1 TB of data with no time-limit is available at, https://my.vertica.com/community/. This should be sufficient to get developers started and support smaller installations or where data retention periods aren't that long.
+* Vertica (http://www.vertica.com): A commercial Enterprise class SQL analytics database that is highly scalable. It offers built-in automatic high-availability and excels at in-database analytics and compressing and storing massive amounts of data. In the HP Public Cloud we use Vertica in a number of areas such as metrics and many other data streams. Currently, we process around 25 K metrics/sec and store them for > 13 month data retention periods. A free version of Vertica that can store up to 1 TB of data with no time-limit is available at, https://my.vertica.com/community/. This should be sufficient to get developers started and support smaller installations or where data retention periods are more limited.
 
 * Apache Kafka (http://kafka.apache.org): Apache Kafka is publish-subscribe messaging rethought as a distributed commit log. Kafka is a highly performant, distributed, fault-tolerant, and scalable message queue with durability built-in. 
 
