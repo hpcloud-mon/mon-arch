@@ -1,6 +1,6 @@
 # Introduction
 
-A comprehensive cloud monitoring solution for OpenStack based clouds that employs node-based agents to report metrics to a RESTful API, where alarms can be created, evaluated and notifications are sent. Monitoring enables users to understand the operational effectiveness of the services and underlying infrastructure that make up their cloud and provide actionable details when there is a problem.
+A comprehensive Monitoring as a Service (MONaaS) for OpenStack based clouds that employs node-based agents to report metrics to a RESTful API, where alarms can be created, evaluated and notifications sent. Monitoring enables users to understand the operational effectiveness of the services and underlying infrastructure that make up their cloud and provide actionable details when there is a problem.
 
 * Target Platform: OpenStack based systems and companies that use OpenStack.
 * What: Node agent based metrics collection to a RESTful API.
@@ -11,9 +11,7 @@ A comprehensive cloud monitoring solution for OpenStack based clouds that employ
 
 This section describes the overall features.
 
-* A highly performant, scalable, reliable and fault-tolerant monitoring solution that scales to service provider metrics levels of metrics throughput. Performance, scalability and high-availability have been designed in from the start. Can process 100s of thousands of metrics/sec as well as offer data retention periods of greater than a year with no data loss while still processing interactive queries.
-
-* Consolidates and unifies both operational (internal) and Monitoring as a Service (customer facing) capabilities. Service providers usually treat service operational monitoring separately from customer facing Monitoring as a Service (MaaS). This distinction is arbitrary and our solution has been designed to handle both, which allows us to reduce the number of systems that are required for monitoring.
+* A highly performant, scalable, reliable and fault-tolerant Monitoring as a Service (MONaaS) solution that scales to service provider metrics levels of metrics throughput. Performance, scalability and high-availability have been designed in from the start. Can process 100s of thousands of metrics/sec as well as offer data retention periods of greater than a year with no data loss while still processing interactive queries.
 
 * Rest API for storing and querying  metrics and historical information. Most monitoring solution use special transports and protocols, such as CollectD or NSCA (Nagios). In our solution, http is the only protocol used. This simplifies the overall design and also allows for a much richer way of describing the data via dimensions.
 
