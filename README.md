@@ -1,6 +1,6 @@
 # Introduction
 
-A comprehensive Monitoring as a Service (MONaaS) for OpenStack based clouds that employs node-based agents to report metrics to a RESTful API, where alarms can be created, evaluated and notifications sent. Monitoring enables users to understand the operational effectiveness of the services and underlying infrastructure that make up their cloud and provide actionable details when there is a problem.
+A comprehensive Monitoring as a Service (MONaaS) solution for OpenStack based clouds that employs node-based agents to report metrics to a RESTful API, where alarms can be created, evaluated and notifications sent. Monitoring enables users to understand the operational effectiveness of the services and underlying infrastructure that make up their cloud and provide actionable details when there is a problem.
 
 * Target Platform: OpenStack based systems and companies that use OpenStack.
 * What: Node agent based metrics collection to a RESTful API.
