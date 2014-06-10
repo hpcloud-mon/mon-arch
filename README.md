@@ -50,13 +50,15 @@ This section describes the overall features.
 
 * Transform and Aggregation Engine: Transform metric names and values, such as delta or time-based derivative calculations, and creates new metrics that are published to the Message Queue. The Transform Engine is not available yet.
 
+* Anomaly and Prediction Engine: Evaluates prediction and anomalies and generates predicted metrics as well as anomaly likelihood and anomaly scores.
+
 * Threshold Engine (mon-thresh): Computes thresholds on metrics and publishes alarms to the MessageQ when exceeded. Based on Apache Storm a free and open distributed real-time computation system.
 
 * Notification Engine (mon-notification): Consumes alarm state transition messages from the MessageQ and sends notifications, such as emails for alarms. The Notification Engine is Python based.
 
 * Message Queue: A third-party component that primarily receives published metrics from the Monitoring API and alarm state transition messages from the Threshold Engine that are consumed by other components, such as the Persister and Notification Engine. The Message Queue is also used to publish and consume other events in the system. Currently, a Kafka based MessageQ is supported. Kafka is a highly performance, distributed, fault-tolerant, and scalable message queue with durability built-in. We will look at other alternatives, such as RabbitMQ and in-fact in our previous implementation RabbitMQ was supported, but due to performance, scale, durability and high-availability limitiations with RabbitMQ we have moved to Kafka.
 
-* Metrics and Alarms Database: A third-party component that primarily stores metrics and the alarm state history. Currently, Vertica is supported. We will look at other open-source alternatives, such as MySQL or a NoSQL database.
+* Metrics and Alarms Database: A third-party component that primarily stores metrics and the alarm state history. Currently, Vertica is supported and development for InfluxDB is in progress.
 
 * Config Database: A third-party component that stores a lot of the configuration and other information in the system. Currently, MySQL is supported.
 
@@ -91,7 +93,7 @@ There are several messages that are published and consumed by various components
 
 ### Metrics and Alarms Database
 
-A high-performance analytics database that can store massive amounts of metrics and alarms in real-time and also support interactive queries. Currently based on Vertica.
+A high-performance analytics database that can store massive amounts of metrics and alarms in real-time and also support interactive queries. Currently based on Vertica with support for InfluxDB in progress.
 
 The SQL schema is as follows:
 
@@ -201,6 +203,8 @@ Uses a number of underlying technologies:
 
 * Disruptor (http://lmax-exchange.github.io/disruptor/): The Disruptor is a high-speed ring buffer implementation.
 
+* InfluxDB (http://influxdb.com/): An open-source distributed time series database with no external dependencies.
+
 # Future Plans
 
 The initial code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
@@ -211,7 +215,7 @@ Here is just a sample of the items that we think make sense to work on next.
  
 * Support for events. Currently we are focused on a metrics processing engine, but we see events as an important area to address.
 
-* Support for an open-source Metrics and Alarm History database. Currently, Vertica is used as the Metrics and Alarm History database. Databases such as MySQL or MongoDB are not event close to the performance and scale of Vertica. While Vertica is an absolutely amazing analytics database and has a free Community Edition available, we realize that support for only a commerical database in an open-source project is an impediment for gaining more wide-spread adoption by the open-source community. We will be adding support for at least one open-source database such as InfluxDB (http://influxdb.org/), Cassandra or MySQL.
+* Support for an open-source Metrics and Alarm History database. Currently, Vertica is used as the Metrics and Alarm History database. Databases such as MySQL or MongoDB are not event close to the performance and scale of Vertica. While Vertica is an absolutely amazing analytics database and has a free Community Edition available, we realize that support for only a commerical database in an open-source project is an impediment for gaining more wide-spread adoption by the open-source community. We are in the process of adding support for InfluxDB (http://influxdb.org/), Cassandra or MySQL.
 
 * More advanced in-database analytics: Current support for statistics could be greatly extended by adding in-database processing of standard of deviation, moving window averages, confidence interval calculations and many more statistics functions. We would also like to add the ability to do anomaly detection.   
 
