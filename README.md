@@ -50,6 +50,8 @@ This section describes the overall features.
 
 * Transform and Aggregation Engine: Transform metric names and values, such as delta or time-based derivative calculations, and creates new metrics that are published to the Message Queue. The Transform Engine is not available yet.
 
+* Anomaly and Prediction Engine: Evaluates prediction and anomalies and generates predicted metrics as well as anomaly likelihood and anomaly scores.
+
 * Threshold Engine (mon-thresh): Computes thresholds on metrics and publishes alarms to the MessageQ when exceeded. Based on Apache Storm a free and open distributed real-time computation system.
 
 * Notification Engine (mon-notification): Consumes alarm state transition messages from the MessageQ and sends notifications, such as emails for alarms. The Notification Engine is Python based.
