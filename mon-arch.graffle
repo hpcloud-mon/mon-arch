@@ -26,7 +26,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-06-10 12:53:03 +0000</string>
+	<string>2014-06-10 13:11:16 +0000</string>
 	<key>Modifier</key>
 	<string>Roland Hochmuth</string>
 	<key>NotesVisible</key>
@@ -2248,7 +2248,7 @@ metrics}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
 
 \f0\fs20 \cf0 Metrics and Alarm Database\
-&lt;&lt;Vertica&gt;&gt;}</string>
+&lt;&lt;Vertica and InfluxDB&gt;&gt;}</string>
 						<key>VerticalPad</key>
 						<integer>0</integer>
 					</dict>
@@ -5045,7 +5045,7 @@ metric}</string>
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{193, 227}, {2113, 1351}}</string>
+		<string>{{227, 227}, {2113, 1351}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
