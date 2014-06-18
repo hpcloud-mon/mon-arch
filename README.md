@@ -56,7 +56,7 @@ This section describes the overall features.
 
 * Notification Engine (mon-notification): Consumes alarm state transition messages from the MessageQ and sends notifications, such as emails for alarms. The Notification Engine is Python based.
 
-* Message Queue: A third-party component that primarily receives published metrics from the Monitoring API and alarm state transition messages from the Threshold Engine that are consumed by other components, such as the Persister and Notification Engine. The Message Queue is also used to publish and consume other events in the system. Currently, a Kafka based MessageQ is supported. Kafka is a highly performance, distributed, fault-tolerant, and scalable message queue with durability built-in. We will look at other alternatives, such as RabbitMQ and in-fact in our previous implementation RabbitMQ was supported, but due to performance, scale, durability and high-availability limitiations with RabbitMQ we have moved to Kafka.
+* Message Queue: A third-party component that primarily receives published metrics from the Monitoring API and alarm state transition messages from the Threshold Engine that are consumed by other components, such as the Persister and Notification Engine. The Message Queue is also used to publish and consume other events in the system. Currently, a Kafka based MessageQ is supported. Kafka is a high performance, distributed, fault-tolerant, and scalable message queue with durability built-in. We will look at other alternatives, such as RabbitMQ and in-fact in our previous implementation RabbitMQ was supported, but due to performance, scale, durability and high-availability limitiations with RabbitMQ we have moved to Kafka.
 
 * Metrics and Alarms Database: A third-party component that primarily stores metrics and the alarm state history. Currently, Vertica is supported and development for InfluxDB is in progress.
 
@@ -68,7 +68,7 @@ This section describes the overall features.
 
 * Ceilometer publisher: A multi-publisher plugin for Ceilometer, not shown, that converts and publishes samples to the Monitoring API.
 
-Most of the components in are described in their respective repositries. However, there aren't any repositories for the third-party components used we describe some of the relevant details here.
+Most of the components are described in their respective repositories. However, there aren't any repositories for the third-party components used, so we describe some of the relevant details here.
 
 ### Message Queue
 
@@ -173,8 +173,8 @@ This section describes the sequence of operations involved in posting a metric t
 2. The Persister consumes the metric from the Message Queue and stores in the Metrics Store.
 3. The Transform Engine consumes the metrics from the Message Queue, performs transform and aggregation operations on metrics, and publishes metrics that it creates back to Message Queue.
 4. The Threshold Engine consumes metrics from the Message Queue and evaluates alarms. If a state change occurs in an alarm, an "alarm-state-transitioned-event" is published to the Message Queue.
-5. The Notification Engine consumes "alarm-state-transitioned-events" from the Message Queue, evaluates whether they have a Notification Method associated with it, and send the appropriate notification, such as email.
-6. The Persister consumes the "alarm-state-transitioned-event" from the Message Queue and store in the Alarm State History Store.
+5. The Notification Engine consumes "alarm-state-transitioned-events" from the Message Queue, evaluates whether they have a Notification Method associated with it, and sends the appropriate notification, such as email.
+6. The Persister consumes the "alarm-state-transitioned-event" from the Message Queue and stores it in the Alarm State History Store.
 
 
 # Development Environment
@@ -207,7 +207,7 @@ Uses a number of underlying technologies:
 
 # Future Plans
 
-The initial code-base has been released by HP as an open-source project and is initially focused on a metrics processing, alarming and notifications. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
+The initial code-base has been released by HP as an open-source project and is initially focused on metrics processing, alarming and notifications. Although the initial release includes a lot of features, there is still a significant amount of work to do. We are very interested in working with other companies and open-source developers.
 
 Here is just a sample of the items that we think make sense to work on next.
 
